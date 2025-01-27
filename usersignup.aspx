@@ -111,9 +111,8 @@
 
                         <div class="row">
                             <div class="col">
-                                <div class="form-group">
-                                    <a href="usersignup.aspx">
-                                        <input class="btn btn-success btn-block btn-lg" id="Button2" type="button" value="Sign Up" /></a>
+                                <div class="form-group">                                  
+                                        <asp:Button class="btn btn-success btn-block btn-lg" id="Button2" type="button" runat="server" Text="Sign Up" OnClick="Button2_Click" />
                                 </div>
                             </div>
                         </div>
