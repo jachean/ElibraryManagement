@@ -23,13 +23,13 @@ namespace ElibraryManagement
         protected void Button2_Click(object sender, EventArgs e)
         {
            
-            if (checkMemberExists())
+            if (!checkMemberExists())
             {
                 signUpNewMember();
             }
             else {
                 Response.Write("<script>alert('Member Already Exists With This Member ID');</script>");
-
+                
             }
         }
 
@@ -43,17 +43,19 @@ namespace ElibraryManagement
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM member_master_table WHERE member_id = '" + TextBox8.Text.Trim()+"'", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM member_master_tbl WHERE member_id = '" + TextBox8.Text.Trim()+"'", con);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                da.Fill(dt);
+                da.Fill(dt);              
                 if (dt.Rows.Count >= 1)
-                {                  
+                {
+                    
                     return true;
                 }
                 else
-                {                 
+                {
+                   
                     return false;
                 }               
               
@@ -93,7 +95,7 @@ namespace ElibraryManagement
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                Response.Write("<script>alert(Sign Up Successful)</script>");
+                Response.Write("<script>alert('Sign Up Successful')</script>");
                 Response.Redirect("userlogin.aspx");
             }
             catch (Exception ex)
